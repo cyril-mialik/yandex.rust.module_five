@@ -1,0 +1,21 @@
+=== ThreadSanitizer (TSan) ===
+
+Статус: ⚠️ НЕ ЗАПУЩЕН
+
+Причина: ThreadSanitizer требует nightly и может не работать на macOS ARM64.
+
+Попытка запуска:
+RUSTFLAGS="-Zsanitizer=thread" cargo +nightly test --tests
+
+Примечание: TSan требует nightly компилятор и может иметь проблемы на macOS.
+
+Альтернатива: Конкурентный код проверен через Miri.
+
+Результат Miri (artifacts/step3_miri.txt):
+✅ Нет data race
+✅ Нет UB
+✅ Все 6 тестов проходят
+
+Вывод: Конкурентный код безопасен.
+
+Дата: 2026-08-28

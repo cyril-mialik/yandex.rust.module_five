@@ -1,98 +1,22 @@
-error: failed to run `rustc` to learn about target-specific information
+=== LeakSanitizer (LSan) ===
 
-Caused by:
-  process didn't exit successfully: `/Users/cyril/.rustup/toolchains/nightly-aarch64-apple-darwin/bin/rustc - --crate-name ___ --print=file-names -Zsanitizer=leak --crate-type bin --crate-type rlib --crate-type dylib --crate-type cdylib --crate-type staticlib --crate-type proc-macro --print=split-debuginfo --print=crate-name --print=cfg -Wwarnings` (exit status: 1)
-  --- stdout
-  ___
-  lib___.rlib
-  lib___.dylib
-  lib___.dylib
-  lib___.a
-  lib___.dylib
-  off
-  packed
-  unpacked
-  ___
-  debug_assertions
-  fmt_debug="full"
-  overflow_checks
-  panic="unwind"
-  proc_macro
-  relocation_model="pic"
-  sanitize="leak"
-  target_abi=""
-  target_arch="aarch64"
-  target_endian="little"
-  target_env=""
-  target_family="unix"
-  target_feature="aes"
-  target_feature="crc"
-  target_feature="dit"
-  target_feature="dotprod"
-  target_feature="dpb"
-  target_feature="dpb2"
-  target_feature="fcma"
-  target_feature="fhm"
-  target_feature="flagm"
-  target_feature="flagm2"
-  target_feature="fp16"
-  target_feature="frintts"
-  target_feature="jsconv"
-  target_feature="lor"
-  target_feature="lse"
-  target_feature="lse2"
-  target_feature="neon"
-  target_feature="paca"
-  target_feature="pacg"
-  target_feature="pan"
-  target_feature="pmuv3"
-  target_feature="ras"
-  target_feature="rcpc"
-  target_feature="rcpc2"
-  target_feature="rdm"
-  target_feature="sb"
-  target_feature="sha2"
-  target_feature="sha3"
-  target_feature="ssbs"
-  target_feature="v8.1a"
-  target_feature="v8.2a"
-  target_feature="v8.3a"
-  target_feature="v8.4a"
-  target_feature="vh"
-  target_has_atomic
-  target_has_atomic="128"
-  target_has_atomic="16"
-  target_has_atomic="32"
-  target_has_atomic="64"
-  target_has_atomic="8"
-  target_has_atomic="ptr"
-  target_has_atomic_load_store
-  target_has_atomic_load_store="128"
-  target_has_atomic_load_store="16"
-  target_has_atomic_load_store="32"
-  target_has_atomic_load_store="64"
-  target_has_atomic_load_store="8"
-  target_has_atomic_load_store="ptr"
-  target_has_atomic_primitive_alignment="128"
-  target_has_atomic_primitive_alignment="16"
-  target_has_atomic_primitive_alignment="32"
-  target_has_atomic_primitive_alignment="64"
-  target_has_atomic_primitive_alignment="8"
-  target_has_atomic_primitive_alignment="ptr"
-  target_has_reliable_f128
-  target_has_reliable_f16
-  target_has_reliable_f16_math
-  target_has_threads
-  target_object_format="mach-o"
-  target_os="macos"
-  target_pointer_width="64"
-  target_thread_local
-  target_vendor="apple"
-  ub_checks
-  unix
+Статус: ⚠️ НЕ ЗАПУЩЕН
 
-  --- stderr
-  error: leak sanitizer is not supported for this target
+Причина: LeakSanitizer не поддерживается на macOS ARM64.
 
-  error: aborting due to 1 previous error
+Попытка запуска:
+RUSTFLAGS="-Zsanitizer=leak" cargo +nightly test --tests
 
+Результат:
+error: leak sanitizer is not supported for this target
+
+Документация: https://doc.rust-lang.org/rustc/sanitizers.html
+
+Альтернатива: Использован Valgrind через Docker для проверки утечек.
+
+Результат Valgrind (artifacts/valgrind_output.txt):
+==1== All heap blocks were freed -- no leaks are possible
+
+Вывод: Проверка утечек выполнена через Valgrind. Утечек не обнаружено.
+
+Дата: 2026-08-28
