@@ -1,0 +1,30 @@
+warning: Cargo.toml: file `/Users/cyril/Downloads/Programming/Projects/Rust/yandex.rust.module_five/benches/baseline.rs` found to be present in multiple build targets:
+  * `bin` target `baseline`
+  * `bench` target `baseline`
+warning: `broken-app` (manifest) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/baseline`
+=== ДО оптимизации (медленные версии) ===
+sum_even: 181.75µs
+slow_fib: 16.638042ms
+slow_dedup: 161.791167ms
+sum_even: 182.417µs
+slow_fib: 16.345958ms
+slow_dedup: 162.778584ms
+sum_even: 254.375µs
+slow_fib: 16.721958ms
+slow_dedup: 162.701292ms
+
+=== ПОСЛЕ оптимизации (быстрые версии) ===
+sum_even: 182.375µs
+fast_fib: 875ns
+fast_dedup: 1.940666ms
+sum_even: 179.166µs
+fast_fib: 292ns
+fast_dedup: 1.861667ms
+sum_even: 178.708µs
+fast_fib: 250ns
+fast_dedup: 1.860708ms
+
+=== Проверка корректности ===
+Все тесты пройдены!
